@@ -270,9 +270,39 @@ show_completion() {
     
     echo ""
     print_message "$GREEN" "========================================="
-    print_message "$GREEN" "Thank you for using this setup script! writen by Pradeep Kumar"
+    print_message "$GREEN" "Thank you for using this setup script! Written by Pradeep Kumar"
     print_message "$GREEN" "========================================="
     echo ""
+}
+
+################################################################################
+# MAIN EXECUTION
+################################################################################
+
+main() {
+    clear
+    print_header "OpenVPN Server Setup Automation Script"
+    
+    print_message "$BLUE" "This script will automatically install and configure OpenVPN server"
+    print_message "$BLUE" "on your Ubuntu system using the provided configuration."
+    echo ""
+    
+    # Pre-installation checks
+    check_root
+    check_internet
+    check_requirements
+    backup_existing
+    
+    # Installation steps
+    download_installer
+    run_installer
+    
+    # Post-installation
+    show_completion
+    
+    # Keep the installer script for future use
+    print_message "$BLUE" "Keeping installer script for adding more clients later..."
+    print_message "$GREEN" "✓ Setup complete - $SCRIPT_NAME saved for future use"
 }
 
 # Run main function
